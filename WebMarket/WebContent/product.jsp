@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="dto.Product" %>
-<<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"></jsp:useBean>
+<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"></jsp:useBean>
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 

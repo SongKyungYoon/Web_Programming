@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,9 +42,12 @@
 					<label for="h2">운동</label><input type="checkbox" id="h2" name="hobby2">
 					<label for="h3">영화</label><input type="checkbox" id="h3"	name="hobby3">
 				</p>
+				<div>
+					<textarea name="comment" rows="3" cols="30" placeholder="가입 인사를 입력해주세요"></textarea>
+				</div>
 				<p>
-					<input type="submit" value="가입하기"> <input type="reset"
-						value="다시 쓰기">
+					<input type="submit" value="가입하기"> 
+					<input type="reset" value="다시 쓰기">
 				</p>
 			</fieldset>
 		</form>
