@@ -7,20 +7,13 @@ import dto.Product;
 public class ProductRepository {
 
 	private ArrayList<Product> listOfProducts = new ArrayList<Product>();
-	
-	public Product getProductById(String productId) {
-		Product productById = null;
-		
-		for(int i = 0; i<listOfProducts.size(); i++) {
-			Product product = listOfProducts.get(i);
-			if(product != null && product.getProductId() != null && product.getProductId().equals(productId)) {
-				productById = product;
-				break;
-			}
-		}
-		return productById;
-	}
-	
+	private static ProductRepository instance = new ProductRepository();
+
+	public static ProductRepository getInstance(){
+		return instance;
+	} 
+
+
 	public ProductRepository() {
 		Product phone = new Product("P1234","iPhone mini",1200000);
 		phone.setDescription("5.8-inch, 1334X750 Retina Display, 8-megapicxel iSight Camera");
@@ -47,9 +40,25 @@ public class ProductRepository {
 		listOfProducts.add(notebook);
 		listOfProducts.add(tablet);
 	}
-	
-	public ArrayList<Product> getAllProducts(){
+
+	public ArrayList<Product> getAllProducts() {
 		return listOfProducts;
 	}
 	
+	public Product getProductById(String productId) {
+		Product productById = null;
+
+		for (int i = 0; i < listOfProducts.size(); i++) {
+			Product product = listOfProducts.get(i);
+			if (product != null && product.getProductId() != null && product.getProductId().equals(productId)) {
+				productById = product;
+				break;
+			}
+		}
+		return productById;
+	}
+	
+	public void addProduct(Product product) {
+		listOfProducts.add(product);
+	}
 }

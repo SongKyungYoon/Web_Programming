@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="dto.Product" %>
-<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"></jsp:useBean>
+<%@ page import="dao.ProductRepository"%>
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
@@ -18,7 +18,8 @@
 	</div>
 	<%
 		String id = request.getParameter("p_id");
-		Product product = productDAO.getProductById(id);
+		ProductRepository dao = ProductRepository.getInstance();
+		Product product = dao.getProductById(id);
 	%>
 	<div class="container">
 		<div class="col-md-6">
