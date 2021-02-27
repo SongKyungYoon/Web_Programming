@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Join Membership</title>
+<style type="text/css" rel="stylesheet">
+#container {
+	width: 25%;
+	margin: 5px auto;
+}
+
+legend {
+	font-weight: bold;
+	font-size: xx-large;
+}
+</style>
+</head>
+<body>
+	<div id=container>
+		<form action="join" method="post">
+			<fieldset>
+				<legend>회원가입</legend>
+				<div>
+					<label for="name">이 름 : </label> <input id="name" type="text" name="name">
+				</div>
+				<div>
+					<label for="id">아 이 디 : </label> <input id="id" type="text" name="id">
+				</div>
+				<div>
+					<label for="pw">비밀번호 : </label> <input id="pw" type="text" name="pw">
+				</div>
+				<button type="submit">가입하기</button>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
