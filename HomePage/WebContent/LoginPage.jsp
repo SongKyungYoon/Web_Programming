@@ -13,6 +13,9 @@
 		margin: 10px auto;
 		
 	}
+	small{
+		color: red;
+	}
 </style>
 </head>
 <body>
@@ -20,14 +23,14 @@
 		<form action="LoginController" method="post">
 			<div class="mb-3">
 				<label for="user_id" class="form-label">아 이 디</label>
-				<input type="text" class="form-control" name="id" id="user_id" required>
+				<input type="text" class="form-control" name="id" id="user_id" >
   			</div>
  			<div class="mb-3">
     			<label for="user_pw" class="form-label">비밀번호</label>
-    			<input type="password" class="form-control" name="pw" id="user_pw" required>
+    			<input type="password" class="form-control" name="pw" id="user_pw" >
   			</div>
   			<div class="mb-3 form-check form-check-inline">
-    			<input class="form-check-input" type="radio" name="position" value="학생" id="student"  required>
+    			<input class="form-check-input" type="radio" name="position" value="학생" id="student">
   				<label class="form-check-label" for="student">학생</label>
   			</div>
   			<div class="mb-3 form-check form-check-inline">
@@ -46,6 +49,8 @@
   				<button type="submit" class="btn btn-primary" name="button" value="로그인">로그인</button>
   				<button type="submit" class="btn btn-primary" name="button" value="회원가입">회원가입</button>
   			</div>
+  			<small>${space}</small>
+  			<small>${error}</small>
 		</form>
 	</div>
 </body>

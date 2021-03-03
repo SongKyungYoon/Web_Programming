@@ -29,7 +29,7 @@
     			<input type="tel" class="form-control" name=phoneNumber id="phone_number" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="'-' 포함 입력" required>
   			</div>
   			<div class="col-md-12">
-    			<label for="new_id" class="form-label">새로운 아 이 디</label>
+    			<label for="new_id" class="form-label">새로운 아 이 디 </label> <small style="color: red;">${duplicateId}</small>
     			<input type="text" class="form-control" name="id" id="new_id" required>
   			</div>
  			 <div class="col-md-12">

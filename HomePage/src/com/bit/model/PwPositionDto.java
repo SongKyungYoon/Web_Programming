@@ -1,13 +1,12 @@
 package com.bit.model;
 
-public class IdPwPositionDto {
+public class PwPositionDto {
 
-	private String name;
-	private String id;	
+	private String name;	
 	private String pw;
 	private String position;
 	
- 	public IdPwPositionDto(){
+ 	public PwPositionDto(){
 		
 	}
  	
@@ -19,15 +18,6 @@ public class IdPwPositionDto {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getPw() {

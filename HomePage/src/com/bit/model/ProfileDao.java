@@ -1,6 +1,7 @@
 package com.bit.model;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class ProfileDao {
 		
 	}
 	
-	public void inputData(String name, String birthday, String phoneNumber, String id, String pw, String position) {
+	public void inputData(String name, String birthday, String phoneNumber, String id, String pw, String position) throws SQLException {
 		
 		String sql = "insert into profile values(?,?,?,?,?,?)";
 		
@@ -42,9 +43,7 @@ public class ProfileDao {
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
+		} finally {
 				try {
 					if(pstmt!=null) pstmt.close();
 					if(conn!=null) conn.close();
@@ -54,27 +53,21 @@ public class ProfileDao {
 		}
 	}
 	
-	public List<IdPwPositionDto> outputData() {
-		
-		List<IdPwPositionDto> list = new ArrayList<IdPwPositionDto>();
-		String sql = "select NAME, ID, PW, POSITION from profile";
-		
+	public PwPositionDto idInformation(String id) throws SQLException {
+	
+		String sql = "select NAME, PW, POSITION from profile where ID= '"+id+"'";
+		PwPositionDto dto = new PwPositionDto();
 		try {
 			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
+			conn= DriverManager.getConnection(url, user, password);
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				IdPwPositionDto dto = new IdPwPositionDto();
 				dto.setName(rs.getString("NAME"));
-				dto.setId(rs.getString("ID"));
 				dto.setPw(rs.getString("PW"));
 				dto.setPosition(rs.getString("POSITION"));
-				list.add(dto);
 			}
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 				try {
@@ -82,11 +75,10 @@ public class ProfileDao {
 					if(pstmt != null)pstmt.close();
 					if(conn != null)conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}
-		return list;
+		return dto;
 	}
 	
 }
