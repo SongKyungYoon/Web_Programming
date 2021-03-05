@@ -53,10 +53,10 @@ public class ProfileDao {
 		}
 	}
 	
-	public PwPositionDto idInformation(String id) throws SQLException {
+	public NamePwPositionDto idInformation(String id){
 	
 		String sql = "select NAME, PW, POSITION from profile where ID= '"+id+"'";
-		PwPositionDto dto = new PwPositionDto();
+		NamePwPositionDto dto = new NamePwPositionDto();
 		try {
 			Class.forName(driver);
 			conn= DriverManager.getConnection(url, user, password);
@@ -68,6 +68,8 @@ public class ProfileDao {
 				dto.setPosition(rs.getString("POSITION"));
 			}
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 				try {

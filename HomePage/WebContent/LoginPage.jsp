@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div id=LoginForm>
-		<form action="LoginController" method="post">
+		<form action=LoginController method="post">
 			<div class="mb-3">
 				<label for="user_id" class="form-label">아 이 디</label>
 				<input type="text" class="form-control" name="id" id="user_id" >

@@ -1,12 +1,12 @@
 package com.bit.model;
 
-public class PwPositionDto {
+public class NamePwPositionDto {
 
 	private String name;	
 	private String pw;
 	private String position;
 	
- 	public PwPositionDto(){
+ 	public NamePwPositionDto(){
 		
 	}
  	

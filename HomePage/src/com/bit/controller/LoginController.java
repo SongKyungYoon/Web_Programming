@@ -1,6 +1,6 @@
 package com.bit.controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bit.model.PwPositionDto;
+import com.bit.model.NamePwPositionDto;
 import com.bit.model.ProfileDao;
 import com.oreilly.servlet.MultipartRequest;
 @WebServlet("/LoginController") //회원정보 관리 서블릿
@@ -46,25 +46,21 @@ public class LoginController extends HttpServlet {
 				 request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
 			 }else if((id != null) && (pw != null) && (position != null)) {
 				 ProfileDao dao = new ProfileDao();
-				 PwPositionDto dto = null;
-				 try {
+				 NamePwPositionDto dto = null;
+				
 					dto = dao.idInformation(id);
 					if(pw.equals(dto.getPw()) && position.equals(dto.getPosition())) {
 						request.getSession().setAttribute("id", id);
 						request.getSession().setAttribute("name", dto.getName());
 						request.getSession().setAttribute("position", dto.getPosition());
-						System.out.println(request.getSession().getAttribute("id"));
-						System.out.println(request.getSession().getAttribute("name"));
-						System.out.println(request.getSession().getAttribute("position"));
-						System.out.println("로그인 성공");
+						response.sendRedirect("MainPage.jsp");
+					}else if((dto.getPw() == null) && (dto.getPosition() == null)) {
+						request.setAttribute("error"," * 등록되지 않은 아이디 입니다.");
+						request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
 					}else if(!(pw.equals(dto.getPw())) || !(position.equals(dto.getPosition()))) {
-						request.setAttribute("error","아이디 또는 비밀번호 확인해 주세요");
+						request.setAttribute("error","비밀번호 또는 직책을 확인해 주세요");
 						request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
 					}
-				} catch (SQLException e) {
-					request.setAttribute("error","아이디 또는 비밀번호 확인해 주세요");
-					request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
-				}
 			 }
 			
 		} else if(request.getParameter("button").equals("회원가입")) {
