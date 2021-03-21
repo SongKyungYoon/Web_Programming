@@ -1,9 +1,11 @@
 package com.bit.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class NoticeBoardDto {
-
+public class NoticeBoardDto implements Serializable {
+	
+	private String num; //글 번호
 	private String writer; //글 작성자
 	private String id;//글 작성자 ID
 	private String title; // 글 제목
@@ -15,6 +17,14 @@ public class NoticeBoardDto {
 
 	public String getWriter() {
 		return writer;
+	}
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
 	}
 
 	public void setWriter(String writer) {

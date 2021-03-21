@@ -31,6 +31,14 @@ public class LoginController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String logout = request.getParameter("logout");	//Home Page에서 로그아웃 요청이 올 경우
+		if(logout.equals("로그아웃")) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("id");
+			session.removeAttribute("name");
+			session.removeAttribute("position");
+			response.sendRedirect("LoginPage.jsp");
+		}
 	}
 
 	@Override
@@ -86,6 +94,11 @@ public class LoginController extends HttpServlet {
 				request.setAttribute("duplicateId"," * 중복된 아이디 입니다.");
 				request.getRequestDispatcher("SignUpForm.jsp").forward(request, response);
 			}
+		} else if(request.getParameter("button").equals("비회원")) {
+			request.getSession().setAttribute("name", "비회원");
+			request.getSession().setAttribute("id", "비회원");
+			request.getSession().setAttribute("position", "비회원");
+			response.sendRedirect("MainPage.jsp");
 		}
 	}
 	

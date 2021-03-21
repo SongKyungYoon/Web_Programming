@@ -1,6 +1,8 @@
 package com.bit.model;
 
-public class NamePwPositionDto {
+import java.io.Serializable;
+
+public class NamePwPositionDto implements Serializable {
 
 	private String name;	
 	private String pw;

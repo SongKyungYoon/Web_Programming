@@ -10,17 +10,17 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
+	<style type="text/css">
+		a{
+			text-decoration: none;
+		}
+	</style>
 </head>
 <body>
 	<div class="container" style="margin-top: 10px;">
 		<div class="row">
-			<div class="col-md-4">
-				<h1>${sessionScope.name}님 로그인</h1>
-			</div>
+			 <div class="col-md-4"><h1 style="float: left;">${sessionScope.name}님 로그인</h1> <small style="margin-left: 7px;">ID: ${sessionScope.id}</small><br><small style="margin-left: 7px;">소속: ${sessionScope.position}</small></div>
 			<div class="col-3 col-md-4">
-				<p>
-					<small>ID: ${sessionScope.id}</small><br> <small>소속: ${sessionScope.position}</small>
-				</P>
 			</div>
 			<form class="row g-3" action="NoticeBoardController" method="post">
 				<div class="col-md-3">
@@ -49,7 +49,7 @@
 				<div class="col-2">
 					<button type="submit" class="btn btn-primary">제출</button>
 					<button type="reset" class="btn btn-primary">취소</button>
-					<a href="./noticeboard.jsp"><button type="button" class="btn btn-primary">나가기</button></a>
+					<a href="./NoticeBoardController"><button type="button" class="btn btn-primary">나가기</button></a>
 				</div>
 			</form>
 		</div>

@@ -2,6 +2,9 @@ package com.bit.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +22,14 @@ public class NoticeBoardController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		List<NoticeBoardDto> dblist = null;	//Data Base에 저장된 글정보를 저장한다
+		NoticeBoardDto dto = null;//dead code?
+		NoticeBoardDao dao = new NoticeBoardDao();
+		
+		dblist = dao.outpueData();
+		 
+		 request.getSession().setAttribute("dblist", dblist);
+		 response.sendRedirect("noticeboard.jsp");
 	}
 
 	@Override
@@ -44,15 +55,17 @@ public class NoticeBoardController extends HttpServlet {
 			
 			NoticeBoardDao dao = new NoticeBoardDao();
 			dao.inputData(writer, id, title, date, text);
+			List<NoticeBoardDto> dblist = dao.outpueData();
+			request.getSession().setAttribute("dblist",dblist);
 			response.sendRedirect("noticeboard.jsp");
 
 			
 		}else {
-			if(!(writer.equals(userName))) {
+			if(!(writer.equals(userName))) {	//로그인한 사람과 작성자가 일치 하지 않을 경우
 				request.setAttribute("name", "* 이름을 확인해주세요 *");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("writingPage.jsp");
 				dispatcher.forward(request, response);
-			}else if(!(id.equals(userId))) {
+			}else if(!(id.equals(userId))) {	//로그인시 사용한 아이디와 일치 하지 않을 경우
 				request.setAttribute("id", "* 로그인 아이디를 확인해 주세요 *");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("writingPage.jsp");
 				dispatcher.forward(request, response);

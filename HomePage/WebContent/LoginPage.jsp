@@ -47,10 +47,11 @@
   			</div>
   			<div>
   				<button type="submit" class="btn btn-primary" name="button" value="로그인">로그인</button>
+  				<button type="submit" class="btn btn-primary" name="button" value="비회원">비회원</button>
   				<button type="submit" class="btn btn-primary" name="button" value="회원가입">회원가입</button>
   			</div>
-  			<small>${space}</small>
-  			<small>${error}</small>
+  			<small>${requestScope.space}</small>
+  			<small>${requestScope.error}</small>
 		</form>
 	</div>
 </body>
